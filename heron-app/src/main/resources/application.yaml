@@ -1,0 +1,40 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/smalnote?useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+    username: smalnote
+    password: smalnote
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    validationQuery: SELECT CURRENT_TIMESTAMP()
+
+logging:
+  config: 'classpath:log4j2.xml'
+  level:
+    core: INFO
+    web: INFO
+
+---
+spring:
+  profiles: dev
+  datasource:
+   url: jdbc:mysql://localhost:3306/test
+   username: smalnote
+  passord: smalnote
+  driver-class-name: com.mysql.cj.jdbc.Driver
+  validationQuery: SELECT CURRENT_TIMESTAMP()
+logging:
+  level:
+    core: ERROR
+    web: DEBUG
+    com.github.com.smalnote.*: ERROR
+iris.moduleName: devIris
+---
+
+
+heron:
+  appId: ${random.uuid}
+
+iris:
+  moduleName: iris
