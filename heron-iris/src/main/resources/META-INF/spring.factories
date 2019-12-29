@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  IrisAutoConfiguration
+  com.github.smalnote.heron.iris.IrisAutoConfiguration
