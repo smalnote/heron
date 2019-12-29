@@ -13,4 +13,9 @@ public class IrisBeanConfiguration {
     public IrisContext getIrisContext() {
         return irisContext;
     }
+
+    @Bean
+    public Iris getIris() {
+        return new Iris("iris");
+    }
 }

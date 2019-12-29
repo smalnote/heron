@@ -12,18 +12,18 @@ spring:
 logging:
   config: 'classpath:log4j2.xml'
   level:
-    core: INFO
+    core: debug
     web: INFO
 
 ---
 spring:
   profiles: dev
   datasource:
-   url: jdbc:mysql://localhost:3306/test
-   username: smalnote
-  passord: smalnote
-  driver-class-name: com.mysql.cj.jdbc.Driver
-  validationQuery: SELECT CURRENT_TIMESTAMP()
+    url: jdbc:mysql://localhost:3306/smalnote?useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+    username: smalnote
+    password: smalnote
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    validationQuery: SELECT CURRENT_TIMESTAMP()
 logging:
   level:
     core: ERROR
@@ -35,6 +35,22 @@ iris.moduleName: devIris
 
 heron:
   appId: ${random.uuid}
+
+
+tcp.config:
+  - env: DEV
+    mac: SZ01
+    ip: 192.168.0.1
+    port: 3306
+  - env: ST
+    mac: SH01
+    ip: 128.0.0.1
+    port: 3326
+  - env: UAT
+    mac: SH02
+    ip: 10.0.0.1
+    port: 3302
+
 
 iris:
   moduleName: iris
