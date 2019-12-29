@@ -1,4 +1,4 @@
-package com.github.smalnote.heron.model;
+package com.github.smalnode.heron.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

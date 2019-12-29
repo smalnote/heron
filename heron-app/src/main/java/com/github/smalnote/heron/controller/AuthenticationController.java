@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.smalnote.heron.model.User;
+import com.github.smalnode.heron.model.User;
 
 @RestController
 public class AuthenticationController {
