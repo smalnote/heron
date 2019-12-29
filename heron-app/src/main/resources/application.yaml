@@ -15,6 +15,18 @@ logging:
     root: info
     web: info
 
+tcp:
+  enabled: true
+  configs:
+    - env: DEV
+      mac: SZ01
+      ip: 192.168.0.1
+      port: 80
+    - env: ST
+      mac: SZ02
+      ip: 192.168.0.2
+      port: 8080
+
 ---
 spring:
   profiles: dev
