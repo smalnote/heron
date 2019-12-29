@@ -8,7 +8,7 @@
     <artifactId>heron-app</artifactId>
     <packaging>jar</packaging>
 
-    <name>Heron Application</name>
+    <name>Heron App</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
