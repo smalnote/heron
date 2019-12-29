@@ -1,24 +1,26 @@
 package com.github.smalnote.heron.iris;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.annotation.PostConstruct;
+
 @Configuration
-@ConditionalOnClass(Iris.class)
-@EnableConfigurationProperties(IrisProperties.class)
+@EnableConfigurationProperties({IrisProperties.class})
 public class IrisAutoConfiguration {
-	
-	@Autowired
-	private IrisProperties irisProperties;
- 
-    @Bean
-    @ConditionalOnMissingBean
-    public Iris iris() {
-        return new Iris(irisProperties.getModuleName());
+
+    private static final Logger LOG = LoggerFactory.getLogger(IrisAutoConfiguration.class);
+
+    @Autowired
+    private IrisProperties irisProperties;
+
+    @PostConstruct
+    public void setUp() {
+        LOG.debug("iris properties loaded with name: {} ", irisProperties.getName());
     }
+
 
 }

@@ -1,4 +1,4 @@
-package com.github.smalnote.heron.config;
+package com.github.smalnote.heron.tcp.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

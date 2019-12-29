@@ -12,8 +12,8 @@ spring:
 logging:
   config: 'classpath:log4j2.xml'
   level:
-    core: debug
-    web: INFO
+    root: info
+    web: info
 
 ---
 spring:
@@ -26,10 +26,10 @@ spring:
     validationQuery: SELECT CURRENT_TIMESTAMP()
 logging:
   level:
-    core: ERROR
-    web: DEBUG
-    com.github.com.smalnote.*: ERROR
-iris.moduleName: devIris
+    root: info
+    web: info
+    com.github.smalnote.heron: debug
+
 ---
 
 
@@ -50,7 +50,3 @@ tcp.config:
     mac: SH02
     ip: 10.0.0.1
     port: 3302
-
-
-iris:
-  moduleName: iris

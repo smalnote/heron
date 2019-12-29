@@ -1,17 +1,12 @@
 package com.github.smalnote.heron.iris;
 
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+@Data
 @ConfigurationProperties(prefix = "iris")
 public class IrisProperties {
 
-	private String moduleName;
+	private String name;
 
-	public String getModuleName() {
-		return moduleName;
-	}
-
-	public void setModuleName(String moduleName) {
-		this.moduleName = moduleName;
-	}
 }

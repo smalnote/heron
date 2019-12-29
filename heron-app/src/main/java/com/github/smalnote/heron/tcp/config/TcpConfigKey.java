@@ -1,4 +1,4 @@
-package com.github.smalnote.heron.config;
+package com.github.smalnote.heron.tcp.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
