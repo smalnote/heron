@@ -1,4 +1,4 @@
-package com.github.smalnote.iris;
+package com.github.smalnote.heron.iris;
 
 public class Iris {
 	

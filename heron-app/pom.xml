@@ -26,11 +26,6 @@
     <dependencies>
 
         <dependency>
-            <groupId>com.github.smalnote</groupId>
-            <artifactId>heron-iris</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
             <exclusions>
@@ -39,6 +34,11 @@
                     <artifactId>spring-boot-starter-logging</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.smalnote.heron</groupId>
+            <artifactId>heron-iris</artifactId>
         </dependency>
 
         <dependency>

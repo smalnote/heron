@@ -1,4 +1,4 @@
-package com.github.smalnote.iris;
+package com.github.smalnote.heron.iris;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;

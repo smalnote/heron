@@ -1,9 +1,9 @@
 package com.github.smalnote.heron;
 
 import com.github.smalnote.heron.config.HeronProperties;
-import com.github.smalnote.iris.EnableIris;
-import com.github.smalnote.iris.Iris;
-import com.github.smalnote.iris.IrisContext;
+import com.github.smalnote.heron.iris.EnableIris;
+import com.github.smalnote.heron.iris.Iris;
+import com.github.smalnote.heron.iris.IrisContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
