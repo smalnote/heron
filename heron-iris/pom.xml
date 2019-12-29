@@ -10,7 +10,7 @@
 	<name>Heron Iris</name>
 
 	<parent>
-		<groupId>com.github.smalnote</groupId>
+		<groupId>com.github.smalnote.heron</groupId>
 		<artifactId>heron</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>

@@ -12,7 +12,7 @@
     <description>Demo project for Spring Boot</description>
 
     <parent>
-        <groupId>com.github.smalnote</groupId>
+        <groupId>com.github.smalnote.heron</groupId>
         <artifactId>heron</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
@@ -82,7 +82,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
