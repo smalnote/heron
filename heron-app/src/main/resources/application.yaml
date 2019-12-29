@@ -29,9 +29,7 @@ logging:
     root: info
     web: info
     com.github.smalnote.heron: debug
-
 ---
-
 
 heron:
   appId: ${random.uuid}
