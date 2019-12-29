@@ -15,6 +15,10 @@ logging:
     root: info
     web: info
 
+mybatis:
+  mapper-locations: 'classpath:mybatis/mapper/*.xml'
+  type-aliases-package: com.github.smalnote.heron.model
+
 tcp:
   enabled: true
   configs:

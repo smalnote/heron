@@ -1,14 +1,7 @@
 package com.github.smalnote.heron.controller;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicLong;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.smalnote.heron.model.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -16,10 +9,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.smalnode.heron.model.User;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 public class AuthenticationController {
@@ -33,7 +29,7 @@ public class AuthenticationController {
 
 	@PostMapping("/login")
 	public void login(@RequestBody String body, HttpServletResponse response)
-			throws JsonParseException, JsonMappingException, IOException {
+			throws IOException {
 		LOG.info(body);
 		ObjectMapper mapper = new ObjectMapper();
 		User user = mapper.readValue(body, User.class);
@@ -60,7 +56,6 @@ public class AuthenticationController {
 		OutputStream os = response.getOutputStream();
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.writeValue(os, user);
-		return;
 	}
 
 }

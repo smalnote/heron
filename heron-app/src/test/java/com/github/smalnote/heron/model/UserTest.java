@@ -1,6 +1,5 @@
 package com.github.smalnote.heron.model;
 
-import com.github.smalnode.heron.model.User;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.smalnote.heron.model.GenesisLogMapper">
+    <resultMap id="GenesisLogMap" type="com.github.smalnote.heron.model.GenesisLog">
+        <id column="event_id" property="eventId" jdbcType="BIGINT"/>
+        <result column="event_date" property="eventDate" jdbcType="TIMESTAMP"/>
+        <result column="level" property="level" jdbcType="VARCHAR"/>
+        <result column="logger" property="logger" jdbcType="VARCHAR"/>
+        <result column="message" property="message" jdbcType="VARCHAR"/>
+        <result column="custom_msg" property="customMsg" jdbcType="VARCHAR"/>
+        <result column="exception" property="exception" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="GenesisLogColumnList">
+        event_id, event_date, level, logger, message, custom_msg, exception
+    </sql>
+
+    <select id="select" resultMap="GenesisLogMap">
+        SELECT
+        <include refid="GenesisLogColumnList"/>
+        FROM genesis_log_t
+        WHERE event_id = #{log.eventId}
+        <if test="fake">
+            AND 1 = 2
+        </if>
+    </select>
+
+    <select id="selectById" parameterType="java.lang.Long" resultMap="GenesisLogMap">
+        SELECT
+        <include refid="GenesisLogColumnList"/>
+        FROM genesis_log_t
+        WHERE event_id = #{eventId}
+    </select>
+
+</mapper>
