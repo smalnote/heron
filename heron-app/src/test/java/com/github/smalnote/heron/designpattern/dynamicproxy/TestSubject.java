@@ -7,7 +7,7 @@ public class TestSubject {
     @Test
     public void shouldSuccessWhenUseSubjectProxy() {
         Subject subject = SubjectFactory.createSubject();
-        subject.boardcast();
+        subject.broadcast();
     }
 
 }
