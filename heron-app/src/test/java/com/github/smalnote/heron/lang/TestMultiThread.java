@@ -5,13 +5,17 @@ import org.junit.Test;
 public class TestMultiThread {
 
     @Test
-    public void shouldBeRunningWhenBeNotifiedAfterWait() {
+    public void shouldBeRunningWhenBeNotifiedAfterWait() throws InterruptedException {
         Subject subject = new Subject();
         for (int i = 0; i < 5; i++) {
-            new Thread(new Receiver(subject)).start();
+            Thread thread = new Thread(new Sender(subject));
+            thread.start();
         }
+
         for (int i = 0; i < 5; i++) {
-            new Thread(new Sender(subject)).start();
+            Thread thread = new Thread(new Receiver(subject));
+            thread.start();
+            thread.join();
         }
     }
 
@@ -50,7 +54,7 @@ class Receiver implements Runnable {
 class Subject {
 
     private String message;
-    private boolean listened = false;
+    private volatile boolean listened = false;
 
     public synchronized String listen() {
         while (!listened) {
@@ -63,6 +67,7 @@ class Subject {
         String tmpMessage = message;
         listened = false;
         message = null;
+        notifyAll();
         return tmpMessage;
     }
 
@@ -76,7 +81,7 @@ class Subject {
         }
         this.message = message;
         this.listened = true;
-        notify();
+        notifyAll();
     }
 
 }
