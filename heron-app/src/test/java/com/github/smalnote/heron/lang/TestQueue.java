@@ -1,14 +1,20 @@
 package com.github.smalnote.heron.lang;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.concurrent.*;
 
 import static org.junit.Assert.assertEquals;
 
 @SuppressWarnings("ALL")
 public class TestQueue {
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void shouldSuccessWhenUseDequeAsStack() {
@@ -44,4 +50,29 @@ public class TestQueue {
          */
     }
 
+    @Test
+    public void shouldThrowExceptionAddToBlockingQueue() {
+        thrown.expect(IllegalStateException.class);
+        BlockingDeque<Integer> blockingDeque = new LinkedBlockingDeque<>(10);
+        for (int i = 0; i < 11; i++) {
+            blockingDeque.add(i);
+        }
+    }
+
+    @Test
+    public void shouldReturnFalseWhenAddToFullBlockingQueue() {
+        BlockingQueue blockingQueue = new LinkedBlockingQueue(10);
+        for (int i = 0; i < 11; i++) {
+            boolean offered = blockingQueue.offer(i);
+            assertEquals(offered, i < 10);
+        }
+    }
+
+    @Test
+    public void shouldBlockWhenAddToTransferQueue() throws InterruptedException {
+        TransferQueue<Integer> transferQueue = new LinkedTransferQueue<>();
+        for (int i = 0; i < 11; i++) {
+            transferQueue.transfer(i);
+        }
+    }
 }
