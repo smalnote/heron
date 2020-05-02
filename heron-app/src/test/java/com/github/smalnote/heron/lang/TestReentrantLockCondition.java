@@ -65,34 +65,43 @@ class Registry {
         this.high = lock.newCondition();
     }
 
-    public void broadcast(String message) throws InterruptedException {
-        lock.lock();
+    public void broadcast(String message) {
+        try {
+            lock.lock();
+            while (hasMessage) {
+                high.await();
+            }
+            hasMessage = true;
+            this.message = message;
 
-        while (hasMessage) {
-            high.await();
+            high.signal();
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        } finally {
+            lock.unlock();
         }
-        hasMessage = true;
-        this.message = message;
 
-        high.signal();
-
-        lock.unlock();
     }
 
-    public String listenHigh() throws InterruptedException {
-        lock.lock();
+    public String listenHigh() {
+        try {
+            lock.lock();
 
-        while (!hasMessage) {
-            high.await();
+            while (!hasMessage) {
+                high.await();
+            }
+            hasMessage = false;
+            String tmpMessage = message;
+            this.message = null;
+
+            high.signal();
+            return tmpMessage;
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        } finally {
+            lock.unlock();
         }
-        hasMessage = false;
-        String tmpMessage = message;
-        this.message = null;
-
-        high.signal();
-
-        lock.unlock();
-        return tmpMessage;
+        return null;
     }
 
 }
