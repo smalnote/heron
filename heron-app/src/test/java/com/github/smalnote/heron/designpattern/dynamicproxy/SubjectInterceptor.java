@@ -12,10 +12,11 @@ public class SubjectInterceptor implements MethodInterceptor {
         if (annotation == null) {
             return methodProxy.invokeSuper(o, objects);
         } else {
-            String value = annotation.value();
-            System.out.println(String.format("%s's %s before execute... ", value, method.getName()));
             Object v = methodProxy.invokeSuper(o, objects);
-            System.out.println(String.format("%s's %s after executed! ", value, method.getName()));
+            if (v instanceof String) {
+                String vv = (String) v;
+                v = "enhanced " + vv;
+            }
             return v;
         }
     }
