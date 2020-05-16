@@ -14,12 +14,14 @@ public class IrisAutoConfiguration {
 
     private static final Logger LOG = LoggerFactory.getLogger(IrisAutoConfiguration.class);
 
-    @Autowired
+    @Autowired(required = false)
     private IrisProperties irisProperties;
 
     @PostConstruct
     public void setUp() {
-        LOG.debug("iris properties loaded with name: {} ", irisProperties.getName());
+        if (irisProperties != null) {
+            LOG.debug("iris properties loaded with name: {} ", irisProperties.getName());
+        }
     }
 
 
