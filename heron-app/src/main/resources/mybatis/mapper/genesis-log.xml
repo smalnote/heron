@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.github.smalnote.heron.model.GenesisLogMapper">
-    <resultMap id="GenesisLogMap" type="com.github.smalnote.heron.model.GenesisLog">
+<mapper namespace="com.github.smalnote.app.model.GenesisLogMapper">
+    <resultMap id="GenesisLogMap" type="com.github.smalnote.app.model.GenesisLog">
         <id column="event_id" property="eventId" jdbcType="BIGINT"/>
         <result column="event_date" property="eventDate" jdbcType="TIMESTAMP"/>
         <result column="level" property="level" jdbcType="VARCHAR"/>
