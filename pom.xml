@@ -9,7 +9,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>Heron Project</name>
+    <name>heron</name>
     <description>Spring boot demon project</description>
 
     <properties>
