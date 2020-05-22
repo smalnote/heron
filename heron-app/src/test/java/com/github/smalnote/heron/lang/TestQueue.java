@@ -3,6 +3,7 @@ package com.github.smalnote.heron.lang;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import org.junit.runners.model.TestTimedOutException;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -68,11 +69,10 @@ public class TestQueue {
         }
     }
 
-    @Test
+    @Test(timeout = 16)
     public void shouldBlockWhenAddToTransferQueue() throws InterruptedException {
+        thrown.expect(TestTimedOutException.class);
         TransferQueue<Integer> transferQueue = new LinkedTransferQueue<>();
-        for (int i = 0; i < 11; i++) {
-            transferQueue.transfer(i);
-        }
+        transferQueue.transfer(10);
     }
 }

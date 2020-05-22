@@ -13,7 +13,7 @@ public class TestThreadPool {
                 new ThreadPoolExecutor.CallerRunsPolicy());
 
         for (int i = 0; i < 20; i++) {
-            executor.execute(new SleepTask(i, 2000));
+            executor.execute(new SleepTask(i, 2));
         }
     }
 
@@ -36,7 +36,6 @@ class SleepTask implements Runnable {
             TimeUnit.MILLISECONDS.sleep(sleepMs);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-            e.printStackTrace();
         }
     }
 }
