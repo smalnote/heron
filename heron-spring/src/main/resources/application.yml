@@ -1,0 +1,9 @@
+logging:
+  level:
+    root: INFO
+    com.github.smalnote.spring: DEBUG
+
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS
