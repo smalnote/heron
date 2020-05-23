@@ -1,4 +1,4 @@
-package com.github.smalnote.spring;
+package com.github.smalnote.heron.spring;
 
 
 import org.apache.commons.logging.Log;

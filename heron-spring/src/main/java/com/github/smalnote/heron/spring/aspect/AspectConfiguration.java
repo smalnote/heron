@@ -1,4 +1,4 @@
-package com.github.smalnote.spring.aspect;
+package com.github.smalnote.heron.spring.aspect;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -14,7 +14,7 @@ public class AspectConfiguration {
 
     private final Log logger = LogFactory.getLog(AspectConfiguration.class);
 
-    @Pointcut("execution(* com.github.smalnote.spring.wke.WkeService.call(..))")
+    @Pointcut("execution(* com.github.smalnote.heron.spring.wke.WkeService.call(..))")
     public void wkeCall() {
     }
 

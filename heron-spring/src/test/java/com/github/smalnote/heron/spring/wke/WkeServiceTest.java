@@ -1,9 +1,8 @@
-package com.github.smalnote.spring.wke;
+package com.github.smalnote.heron.spring.wke;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
@@ -13,11 +12,10 @@ import javax.annotation.Resource;
 public class WkeServiceTest {
 
     @Resource
-    private ApplicationContext applicationContext;
+    WkeService wkeService;
 
     @Test
     public void call() {
-        WkeService wkeService = applicationContext.getBean(WkeService.class);
         wkeService.call("a test call");
     }
 }

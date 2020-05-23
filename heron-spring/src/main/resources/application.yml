@@ -1,7 +1,7 @@
 logging:
   level:
     root: INFO
-    com.github.smalnote.spring: DEBUG
+    com.github.smalnote.heron.spring: DEBUG
 
 spring:
   output:

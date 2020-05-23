@@ -1,4 +1,4 @@
-package com.github.smalnote.spring;
+package com.github.smalnote.heron.spring;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

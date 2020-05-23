@@ -1,4 +1,4 @@
-package com.github.smalnote.spring.aspect;
+package com.github.smalnote.heron.spring.aspect;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
