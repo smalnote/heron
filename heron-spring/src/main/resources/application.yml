@@ -4,6 +4,13 @@ logging:
     com.github.smalnote.heron.spring: DEBUG
 
 spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/smalnote?useUnicode=true&characterEncoding=utf-8&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+    username: smalnote
+    password: smalnote
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    validation-query: SELECT current_time
+
   output:
     ansi:
       enabled: ALWAYS

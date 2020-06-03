@@ -10,12 +10,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import javax.annotation.PostConstruct;
 
 @SpringBootApplication
-public class App {
+public class HeronSpringApp {
 
-    private final Log logger = LogFactory.getLog(App.class);
+    private final Log logger = LogFactory.getLog(HeronSpringApp.class);
 
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(App.class);
+        SpringApplication app = new SpringApplication(HeronSpringApp.class);
         app.setBannerMode(Banner.Mode.LOG);
         app.run(args);
     }
