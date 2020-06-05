@@ -20,6 +20,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <lombok.version>1.18.8</lombok.version>
+        <jsr305.version>3.0.2</jsr305.version>
         <spring.boot.version>2.3.0.RELEASE</spring.boot.version>
     </properties>
 
@@ -52,6 +53,12 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>${jsr305.version}</version>
         </dependency>
 
     </dependencies>
