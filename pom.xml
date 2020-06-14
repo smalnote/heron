@@ -127,5 +127,6 @@
         <module>heron-app</module>
         <module>heron-iris</module>
         <module>heron-spring</module>
+        <module>heron-distribute</module>
     </modules>
 </project>

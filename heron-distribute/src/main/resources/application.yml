@@ -1,0 +1,9 @@
+logging:
+  level:
+    root: INFO
+    com.github.smalnote.heron.dist: DEBUG
+
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS
