@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.smalnote.heron.mybatis.log.GenesisLogMapper">
+
+    <resultMap id="GenesisLogMap" type="com.github.smalnote.heron.mybatis.log.GenesisLog">
+        <id column="event_id" property="eventId" jdbcType="BIGINT"/>
+        <result column="event_date" property="eventDate" jdbcType="TIMESTAMP"/>
+        <result column="level" property="level" jdbcType="VARCHAR"/>
+        <result column="logger" property="logger" jdbcType="VARCHAR"/>
+        <result column="message" property="message" jdbcType="VARCHAR"/>
+        <result column="custom_msg" property="customMsg" jdbcType="VARCHAR"/>
+        <result column="exception" property="exception" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="associationLogResultMap" type="com.github.smalnote.heron.mybatis.log.GenesisLogWithItself">
+        <id column="event_id" property="eventId" jdbcType="BIGINT"/>
+        <result column="event_date" property="eventDate" jdbcType="TIMESTAMP"/>
+        <result column="level" property="level" jdbcType="VARCHAR"/>
+        <result column="logger" property="logger" jdbcType="VARCHAR"/>
+        <result column="message" property="message" jdbcType="VARCHAR"/>
+        <result column="custom_msg" property="customMsg" jdbcType="VARCHAR"/>
+        <result column="exception" property="exception" jdbcType="VARCHAR"/>
+        <association property="mySelf" javaType="com.github.smalnote.heron.mybatis.log.GenesisLogWithItself">
+            <id column="event_id" property="eventId" jdbcType="BIGINT"/>
+            <result column="event_date" property="eventDate" jdbcType="TIMESTAMP"/>
+            <result column="level" property="level" jdbcType="VARCHAR"/>
+            <result column="logger" property="logger" jdbcType="VARCHAR"/>
+            <result column="message" property="message" jdbcType="VARCHAR"/>
+            <result column="custom_msg" property="customMsg" jdbcType="VARCHAR"/>
+            <result column="exception" property="exception" jdbcType="VARCHAR"/>
+        </association>
+    </resultMap>
+
+    <sql id="GenesisLogColumnList">
+        event_id, event_date, level, logger, message, custom_msg, exception
+    </sql>
+
+    <select id="select" resultMap="GenesisLogMap">
+        SELECT
+        <include refid="GenesisLogColumnList"/>
+        FROM genesis_log_t
+        WHERE event_id = #{log.eventId}
+    </select>
+
+    <select id="selectById" parameterType="java.lang.Long" resultMap="GenesisLogMap">
+        SELECT
+        <include refid="GenesisLogColumnList"/>
+        FROM genesis_log_t
+        WHERE event_id = #{eventId}
+    </select>
+
+    <insert id="insert" parameterType="com.github.smalnote.heron.mybatis.log.GenesisLog">
+        INSERT INTO genesis_log_t(level, logger, message, custom_msg, exception)
+        VALUE(#{log.level}, #{log.logger}, #{log.message}, #{log.customMsg}, #{log.exception})
+        <selectKey keyProperty="log.eventId" order="AFTER" resultType="long">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+
+    <insert id="insertBatch" parameterType="com.github.smalnote.heron.mybatis.log.GenesisLog" useGeneratedKeys="true"
+            keyProperty="eventId">
+        INSERT INTO genesis_log_t(level, logger, message, custom_msg, exception)
+        VALUE
+        <foreach collection="logs" item="log" separator=",">
+            (#{log.level}, #{log.logger}, #{log.message}, #{log.customMsg}, #{log.exception})
+        </foreach>
+    </insert>
+
+    <select id="selectAssociationLog" resultMap="associationLogResultMap">
+        SELECT t.event_id, t.event_date, t.level, t.logger, t.message, t.custom_msg, t.exception
+        FROM genesis_log_t t
+        WHERE t.event_id = #{eventId}
+    </select>
+
+</mapper>
