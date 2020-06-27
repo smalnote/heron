@@ -1,0 +1,5 @@
+dubbo:
+  application.name:
+    heron-dubbo-consumer
+  registry.address:
+    zookeeper://localhost:2181

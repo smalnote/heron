@@ -1,0 +1,11 @@
+logging:
+  level:
+    root: info
+    org.apache.dubbo: trace
+
+
+dubbo:
+  application.name:
+    heron-dubbo-provider
+  registry.address:
+    zookeeper://localhost:2181

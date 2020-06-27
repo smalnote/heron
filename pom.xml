@@ -88,6 +88,20 @@
                 <artifactId>mybatis-typehandlers-jsr310</artifactId>
                 <version>1.0.2</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>2.7.7</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-dependencies-zookeeper</artifactId>
+                <version>2.7.7</version>
+                <type>pom</type>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -142,5 +156,8 @@
         <module>heron-spring</module>
         <module>heron-distribute</module>
         <module>heron-mybatis</module>
+        <module>heron-dubbo-api</module>
+        <module>heron-dubbo-provider</module>
+        <module>heron-dubbo-consumer</module>
     </modules>
 </project>
